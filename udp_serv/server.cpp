@@ -50,48 +50,7 @@ void Server::readyData()
     ui->listWidget->addItem(data);                      //ADICIONA A LISTA DE TODOS OS NOSSOS USUÁRIOS
     }
 }
-/*
-void Server::redimensiona()
-{
-    QByteArray pacote = data;//guarda o pacote grande
-    if(pacote.size() > 8192 && pacote.size() < 16382){  //se temos que apenas duplicar o tamanho da mensagem.
-        std::reverse(pacote.begin(),pacote.end());      //inverte array e armazena metade em uma seguda array.
 
-        QByteArray segundaParteDaArray;                     //cria o segundo vetor temporario.
-        segundaParteDaArray = pacote;                     //passa o conteudo do vetor original já invertido.
-        segundaParteDaArray.resize(8191);                   //corta a segunda array para conter metade do valor original.
-
-        std::reverse(pacote.begin(),pacote.end());      //REinverte novamente e volta ao original.
-        pacote.resize(8191);                              //corta a mensagem ORIGINAL para ser enviada.
-    }//depois de tratar até 16384 bytes ou seja 16382 caracteres da tabela ASCII enviamos.
-    else if(pacote.size() >16382)
-    {                                                               //captura de tras para frente a array
-        std::reverse(pacote.begin(),pacote.end());              //inverte array e armazena um terço em um primeiro vetor.
-        QByteArray ParteDaArray1;                                   //cria o segundo vetor temporario.
-        ParteDaArray1 = pacote;                                   //passa o conteudo do vetor original já invertido.
-        ParteDaArray1.resize(8191);                                 //corta a segunda array para conter um terço do valor original.
-        std::reverse(pacote.begin(),pacote.end());              //volta ao original
-        QByteArray ParteDaArray2 = pacote;                        //cria o segundo vetor temporario.
-        ParteDaArray2.chop(8191);                                   //retira a ParteDaArray1 do tamanho original deixando 2 terços.
-        std::reverse(ParteDaArray2.begin(),ParteDaArray2.end());    //inverte array e armazena a segunda parte no começo da seguda array.
-        ParteDaArray2.resize(8191);                                 //corta a segunda array para conter a segunda metade do valor original.
-        QByteArray ParteDaArray3 = pacote;                        //cria o terceiro vetor temporario.
-        ParteDaArray3.resize(8191);                                 //armazena o conteudo do inicio da variavel MENSAGEM.
-
-    }   // 24576 BYTES armazenados em 3 diferentes variáveis que serao enviadas em processos distintos.
-    else
-    {
-        try{//o tamanho maximo por unidade pode ser até 8192 bytes
-            // socket->writeDatagram(Mensagem, grupoHostClient, 45677);
-        }
-        catch(qint64 datagramaExedeTamanho){
-            if(datagramaExedeTamanho == -1){
-                qDebug() << "datagrama excede o tamanho para um pacote UDP";
-            }
-        }
-    }
-}
-*/
 void Server::escreve()
 {
     iniciado = false;
